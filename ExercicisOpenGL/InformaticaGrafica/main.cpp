@@ -9,11 +9,6 @@ int init(void) {
     return 0;
 }
 
-void drawObject()
-{
-
-}
-
 void Ex1()
 {
     glTranslatef(30.0, 20.0, 0.0);
