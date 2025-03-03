@@ -5,8 +5,25 @@ int init(void) {
 
     glClearColor(1.0, 1.0, 1.0, 0.0); // set background color to white
     glMatrixMode(GL_PROJECTION); // set projection parameters
-    gluOrtho2D(-300.0, 250.0, -250.0, 250.0); // set 2D orthographic projection
+    gluOrtho2D(-100.0, 100.0, -100.0, 100.0); // set 2D orthographic projection
     return 0;
+}
+
+void drawObject()
+{
+    glBegin(GL_TRIANGLES);
+    glVertex2f(50.0, -50.0);
+    glVertex2f(0.0, 50.0);
+    glVertex2f(-50.0, -50.0);
+
+    glEnd();
+
+    glBegin(GL_LINE_LOOP);
+    glVertex2f(-99.0, -99.0);
+    glVertex2f(99.0, -99.0);
+    glVertex2f(99.0, 99.0);
+    glVertex2f(-99.0, 99.0);
+    glEnd();
 }
 
 void Ex1()
@@ -123,7 +140,7 @@ void display(void) {
     glClear(GL_COLOR_BUFFER_BIT); // clear display window
     glColor3f(1.0, 0.0, 0.0); // set color to black
     glMatrixMode(GL_MODELVIEW);
-    glLoadIdentity();
+    //glLoadIdentity(); //Con esto comentado haces que con cada click se vuelva "ejecturar el codigo" (hara la rotacion en el caso de fisrt y second viewport)
 
     //transformaciones que aplicaremos. LAS ESCALAS ROTACIONES ETC, SE EJECUTAN DE ABAJO A ARRIBA
 
@@ -133,11 +150,23 @@ void display(void) {
     //Ex3();
     //Ex4();
     //Ex5();
-    Ex6();
+    //Ex6();
     //Ex7();
 
+    /////////////////FIRST VIEWPORT/////////////////    
+    glViewport(10, 10, 200, 200);
+    glColor3f(1.0f, 0.0f, 0.0f);   
+    drawObject();
 
-    glEnd(); // end drawing points
+
+    /////////////////SECOND VIEWPORT/////////////////
+    glViewport(310, 10, 100, 100);
+    glColor3f(0.0f, 1.0f, 0.0f);
+    glRotatef(90.0, 0.0, 0.0, 1.0);
+    drawObject();
+
+
+
     glFlush(); // force execution of OpenGL commands in finite time
 }
 
@@ -145,7 +174,7 @@ int main(int argc, char** argv)
 {
     glutInit(&argc, argv); // start glut
     glutInitDisplayMode(GLUT_SINGLE | GLUT_RGB); // set display mode - single buffer, RGB  color
-    glutInitWindowSize(400, 300); // set window size
+    glutInitWindowSize(500, 375); // set window size
     glutInitWindowPosition(400, 400); // set window position
 
     //Create the window        
