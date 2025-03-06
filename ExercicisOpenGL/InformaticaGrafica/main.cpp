@@ -154,9 +154,11 @@ void display(void) {
     //Ex7();
 
     /////////////////FIRST VIEWPORT/////////////////    
-    glViewport(10, 10, 200, 200);
-    glColor3f(1.0f, 0.0f, 0.0f);   
-    drawObject();
+    /*
+        glViewport(10, 10, 200, 200);
+        glColor3f(1.0f, 0.0f, 0.0f);
+        drawObject();
+    */
 
 
     /////////////////SECOND VIEWPORT/////////////////
@@ -164,6 +166,7 @@ void display(void) {
     glColor3f(0.0f, 1.0f, 0.0f);
     glRotatef(90.0, 0.0, 0.0, 1.0);
     drawObject();
+
 
 
 
